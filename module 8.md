@@ -128,7 +128,8 @@ Output:
 
 
 //paste your output here
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/9ae589f5-a1fc-4e8e-b89f-741b16e93171)
+
 
 
 
