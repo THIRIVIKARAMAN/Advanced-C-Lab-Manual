@@ -17,11 +17,47 @@ Else
 Program:
 
 //type your code here
+```
+#include <stdio.h>
 
+struct eligible {
+    int age;
+    char n[50];
+};
+
+int main() {
+    int i, n;
+    printf("Enter number of persons: ");
+    scanf("%d", &n);
+
+    struct eligible e[n];
+
+    for(i = 0; i < n; i++) {
+        printf("\nEnter name of person %d: ", i + 1);
+        scanf("%s", e[i].n);
+        printf("Enter age of person %d: ", i + 1);
+        scanf("%d", &e[i].age);
+    }
+
+    printf("\nVaccine Eligibility Results:\n");
+    for(i = 0; i < n; i++) {
+        printf("\nName: %s\nAge: %d\n", e[i].n, e[i].age);
+        if(e[i].age <= 6) {
+            printf("Vaccine Eligibility: No\n");
+        } else {
+            printf("Vaccine Eligibility: Yes\n");
+        }
+    }
+
+    return 0;
+}
+```
 
 Output:
 
 //paste your output here
+![image](https://github.com/user-attachments/assets/852bf7a1-c046-40a8-bf1b-19e60325a9ca)
+
 
 
 Result:
@@ -45,7 +81,29 @@ Algorithm:
 Program:
 
 //type your code here
+```
+#include <stdio.h>
 
+struct numbers {
+    int a;
+    int b;
+};
+
+struct numbers add(struct numbers n) {
+    struct numbers result;
+    result.a = n.a + n.b;
+    return result;
+}
+
+int main() {
+    struct numbers n, sum;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &n.a, &n.b);
+    sum = add(n);
+    printf("Sum = %d\n", sum.a);
+    return 0;
+}
+```
 
 
 
@@ -53,6 +111,7 @@ Output:
 
 
 //paste your output here
+![image](https://github.com/user-attachments/assets/f674bcf1-0e28-49b5-8a1a-f1729c5404bd)
 
 
 
@@ -87,7 +146,30 @@ Use scanf to input the file name into the name array.
 Program:
 
 //type your code here
+```
+#include <stdio.h>
 
+int main() {
+    FILE *p;
+    char name[100];
+
+    printf("Enter the file name: ");
+    scanf("%s", name);
+
+    p = fopen(name, "w");
+
+    if (p == NULL) {
+        printf("Error opening file.\n");
+        return 1;
+    }
+
+    printf("File '%s' has been created successfully.\n", name);
+    fclose(p);
+    printf("File has been closed.\n");
+
+    return 0;
+}
+```
 
 
 
@@ -95,6 +177,7 @@ Output:
 
 
 //paste your output here
+![image](https://github.com/user-attachments/assets/1c001853-cf4b-444f-9f1f-7753d50fb0f6)
 
 
 
@@ -134,7 +217,42 @@ Use scanf to input the file name into the name array and the number of strings i
 Program:
 
 //type your code here
+```
+#include <stdio.h>
 
+int main() {
+    FILE *p;
+    char name[100], text[100];
+    int num, i;
+
+    printf("Enter the file name: ");
+    scanf("%s", name);
+
+    printf("Enter number of lines to insert: ");
+    scanf("%d", &num);
+
+    p = fopen(name, "w");
+
+    if (p == NULL) {
+        printf("Error opening file.\n");
+        return 1;
+    }
+
+    printf("File '%s' opened successfully.\n", name);
+
+    for (i = 0; i < num; i++) {
+        printf("Enter line %d: ", i + 1);
+        scanf(" %[^\n]", text);
+        fputs(text, p);
+        fputs("\n", p);
+    }
+
+    fclose(p);
+    printf("Data has been added successfully.\n");
+
+    return 0;
+}
+```
 
 
 
@@ -142,6 +260,7 @@ Output:
 
 
 //paste your output here
+![image](https://github.com/user-attachments/assets/d41253f1-7928-43ef-af2a-420a1386a840)
 
 
 
@@ -188,7 +307,45 @@ Algorithm:
 Program:
 
 //type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
 
+struct subject {
+    char name[50];
+    int marks;
+};
+
+int main() {
+    int n, i;
+    struct subject *s;
+
+    printf("Enter the number of subjects: ");
+    scanf("%d", &n);
+
+    s = (struct subject *)malloc(n * sizeof(struct subject));
+
+    if (s == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    for (i = 0; i < n; i++) {
+        printf("Enter name of subject %d: ", i + 1);
+        scanf("%s", s[i].name);
+        printf("Enter marks of subject %d: ", i + 1);
+        scanf("%d", &s[i].marks);
+    }
+
+    printf("\nSubject Details:\n");
+    for (i = 0; i < n; i++) {
+        printf("Subject %d: %s - %d marks\n", i + 1, s[i].name, s[i].marks);
+    }
+
+    free(s);
+    return 0;
+}
+```
 
 
 
@@ -196,6 +353,7 @@ Output:
 
 
 //paste your output here
+![image](https://github.com/user-attachments/assets/cbbd8495-ad55-4d7d-a124-b5df917f6e3a)
 
 
 
