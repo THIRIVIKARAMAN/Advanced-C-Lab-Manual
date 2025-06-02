@@ -13,9 +13,31 @@ Algorithm:
  
 Program:
 //type your code here
+```
+#include <stdio.h>
+
+int max_of_four(int a, int b, int c, int d) {
+    int max = a;
+    if (b > max) max = b;
+    if (c > max) max = c;
+    if (d > max) max = d;
+    return max;
+}
+
+int main() {
+    int n1, n2, n3, n4, greater;
+    printf("Enter four numbers: ");
+    scanf("%d %d %d %d", &n1, &n2, &n3, &n4);
+    greater = max_of_four(n1, n2, n3, n4);
+    printf("The greatest number is: %d\n", greater);
+    return 0;
+}
+
+```
 
 Output:
 //paste your output here
+![image](https://github.com/user-attachments/assets/f9bfa7ba-bfaa-4bd6-a69e-a2f1c8aea928)
 
 Result:
 Thus, the program  that create a function to find the greatest number is verified successfully.
@@ -37,9 +59,41 @@ Algorithm:
  
 Program:
 //type your code here
+```
+#include <stdio.h>
 
+void calculate_the_max(int n, int k) {
+    int max_and = 0, max_or = 0, max_xor = 0;
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = i + 1; j <= n; j++) {
+            int a = i & j;
+            int o = i | j;
+            int x = i ^ j;
+
+            if (a < k && a > max_and) max_and = a;
+            if (o < k && o > max_or) max_or = o;
+            if (x < k && x > max_xor) max_xor = x;
+        }
+    }
+
+    printf("Maximum AND: %d\n", max_and);
+    printf("Maximum OR : %d\n", max_or);
+    printf("Maximum XOR: %d\n", max_xor);
+}
+
+int main() {
+    int n, k;
+    printf("Enter n and k: ");
+    scanf("%d %d", &n, &k);
+    calculate_the_max(n, k);
+    return 0;
+}
+
+```
 Output:
 //paste your output here
+![image](https://github.com/user-attachments/assets/4cf1bc1a-0972-44bf-b4ec-a6dc64d0b504)
 
 Result:
 Thus, the program to print the maximum values for the AND, OR and XOR comparisons
@@ -60,9 +114,45 @@ Algorithm:
  
 Program:
 //type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
 
+int main() {
+    int noshel, noque;
+    scanf("%d %d", &noshel, &noque);
+
+    int** shelarr = malloc(noshel * sizeof(int*));
+    int* nobookarr = calloc(noshel, sizeof(int));
+
+    for (int i = 0; i < noque; i++) {
+        int type, x, y;
+        scanf("%d %d %d", &type, &x, &y);
+
+        if (type == 1) {
+            nobookarr[x]++;
+            shelarr[x] = realloc(shelarr[x], nobookarr[x] * sizeof(int));
+            shelarr[x][nobookarr[x] - 1] = y;
+        } else if (type == 2) {
+            printf("%d\n", shelarr[x][y]);
+        } else if (type == 3) {
+            printf("%d\n", nobookarr[x]);
+        }
+    }
+
+    for (int i = 0; i < noshel; i++) {
+        free(shelarr[i]);
+    }
+    free(shelarr);
+    free(nobookarr);
+
+    return 0;
+}
+
+```
 Output:
 //paste your output here
+![image](https://github.com/user-attachments/assets/8138909f-59fc-41b3-b05e-fdb9b9c76467)
 
 
 Result:
@@ -87,9 +177,29 @@ Algorithm:
 
 Program:
 //type your code here
+```
+#include <stdio.h>
 
+int main() {
+    int n, sum = 0;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    int a[n];
+    printf("Enter the elements:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+        sum += a[i];
+    }
+
+    printf("Sum of the elements = %d\n", sum);
+    return 0;
+}
+
+```
 Output:
 //paste your output here
+![image](https://github.com/user-attachments/assets/f5992d86-3774-4920-baf1-7bae8a65d846)
 
  
 
@@ -121,9 +231,35 @@ o	If a character is not a space, it may belong to a word. If it's the first non-
 
 Program:
 //type your code here
+```
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
+int main() {
+    char sentence[200];
+    int count = 0, inWord = 0;
+
+    printf("Enter a sentence: ");
+    fgets(sentence, sizeof(sentence), stdin);
+
+    for (int i = 0; sentence[i] != '\0'; i++) {
+        if (isspace(sentence[i])) {
+            inWord = 0;
+        } else if (!inWord) {
+            inWord = 1;
+            count++;
+        }
+    }
+
+    printf("Number of words: %d\n", count);
+    return 0;
+}
+
+```
 Output:
 //paste your output here
+![image](https://github.com/user-attachments/assets/ab8b4ffd-6e7b-4adb-92fc-95bbfd5a31a3)
 
 
 
