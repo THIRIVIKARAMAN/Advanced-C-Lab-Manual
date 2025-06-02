@@ -16,10 +16,52 @@ Algorithm:
 Program:
 
 //type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* head = NULL;
+
+void push(int value) {
+    struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = head;
+    head = newNode;
+}
+
+void display() {
+    struct Node* p = head;
+    if (p == NULL) {
+        printf("Stack is empty\n");
+        return;
+    }
+    printf("Stack elements: ");
+    while (p != NULL) {
+        printf("%d ", p->data);
+        p = p->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    push(10);
+    push(20);
+    push(30);
+    display();
+    return 0;
+}
+
+```
 
 Output:
 
 //paste your output here
+![image](https://github.com/user-attachments/assets/bfc5381f-e0d6-441d-88d2-abff767f06da)
 
 
 Result:
@@ -41,10 +83,60 @@ Algorithm:
 Program:
 
 //type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
 
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* head = NULL;
+
+void push(int value) {
+    struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = head;
+    head = newNode;
+}
+
+void pop() {
+    if (head == NULL) {
+        printf("Stack is empty\n");
+        return;
+    }
+    struct Node* temp = head;
+    printf("Popped element: %d\n", temp->data);
+    head = head->next;
+    free(temp);
+}
+
+void display() {
+    struct Node* p = head;
+    printf("Stack: ");
+    while (p != NULL) {
+        printf("%d ", p->data);
+        p = p->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    push(10);
+    push(20);
+    push(30);
+    display();
+    pop();
+    display();
+    return 0;
+}
+
+```
 Output:
 
 //paste your output here
+![image](https://github.com/user-attachments/assets/4f94443b-be70-4913-9189-e174337c2ca3)
 
 
 
@@ -65,10 +157,57 @@ Algorithm:
 Program:
 
 //type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
 
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* front = NULL;
+struct Node* rear = NULL;
+
+void enqueue(int value) {
+    struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = NULL;
+    if (rear == NULL) {
+        front = rear = newNode;
+    } else {
+        rear->next = newNode;
+        rear = newNode;
+    }
+}
+
+void display() {
+    if (front == NULL) {
+        printf("Queue is empty\n");
+        return;
+    }
+    struct Node* temp = front;
+    printf("Queue elements: ");
+    while (temp != NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    enqueue(5);
+    enqueue(15);
+    enqueue(25);
+    display();
+    return 0;
+}
+
+```
 Output:
 
 //paste your output here
+![image](https://github.com/user-attachments/assets/bfee72b1-8481-4202-8ec1-22f483f832c1)
 
 Result:
 Thus, the program to display queue elements using linked list is verified successfully.
@@ -91,10 +230,54 @@ Algorithm:
 Program:
 
 //type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
 
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* front = NULL;
+struct Node* rear = NULL;
+
+void enqueue(int value) {
+    struct Node* p = (struct Node*) malloc(sizeof(struct Node));
+    p->data = value;
+    p->next = NULL;
+
+    if (rear == NULL) {
+        front = rear = p;
+    } else {
+        rear->next = p;
+        rear = p;
+    }
+}
+
+void display() {
+    struct Node* temp = front;
+    printf("Queue: ");
+    while (temp != NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    display();
+    return 0;
+}
+
+```
 Output:
 
 //paste your output here
+![image](https://github.com/user-attachments/assets/c4ee1693-39f0-4808-85e9-c9fff8b843e9)
 
 Result:
 Thus, the program to insert elements in queue using linked list is verified successfully.
@@ -118,10 +301,51 @@ o	If the queue is not empty, return the data stored in the front node of the lin
 Program:
 
 //type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
 
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* front = NULL;
+struct Node* rear = NULL;
+
+void enqueue(int value) {
+    struct Node* p = (struct Node*) malloc(sizeof(struct Node));
+    p->data = value;
+    p->next = NULL;
+    if (rear == NULL) {
+        front = rear = p;
+    } else {
+        rear->next = p;
+        rear = p;
+    }
+}
+
+void peek() {
+    if (front == NULL) {
+        printf("Queue is empty\n");
+    } else {
+        printf("Peek (front) element is: %d\n", front->data);
+    }
+}
+
+int main() {
+    enqueue(100);
+    enqueue(200);
+    enqueue(300);
+    peek();
+    return 0;
+}
+
+```
 Output:
 
 //paste your output here
+![image](https://github.com/user-attachments/assets/211812af-48cf-4126-959a-6d3eebc7003e)
 
 
 
